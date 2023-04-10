@@ -8,10 +8,11 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
+  id       String    @id @default(uuid())
   username String
   password String
   posts    Post[]
+  comments Comment[]
 }
 
 model Post {
@@ -19,14 +20,16 @@ model Post {
   title     String
   thumbNail String
   content   String
-  User      User?     @relation(fields: [userId], references: [id])
+  User      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String?
   comments  Comment[]
 }
 
 model Comment {
   id      String  @id @default(uuid())
-  Post    Post?   @relation(fields: [postId], references: [id])
+  Post    Post?   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId  String?
   content String
+  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId  String?
 }
