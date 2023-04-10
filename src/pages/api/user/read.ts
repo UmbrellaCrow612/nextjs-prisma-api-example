@@ -15,7 +15,7 @@ export default async function handler(
       },
     });
     console.error(
-      `Method ${method} not allowed on this route /api/user/create`
+      `Method ${method} not allowed on this route /api/user/read`
     );
     return;
   }
