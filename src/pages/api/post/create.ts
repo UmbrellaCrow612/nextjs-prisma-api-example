@@ -61,9 +61,6 @@ export default async function handler(
           },
         },
       },
-      include: {
-        User: true,
-      },
     });
 
     res.status(201).json({
