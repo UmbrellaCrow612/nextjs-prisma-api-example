@@ -21,7 +21,7 @@ export default async function handler(
     return;
   }
 
-  const { id }:any = req.query;
+  const { id }: any = req.query;
 
   if (!id) {
     res.status(400).json({
@@ -34,6 +34,22 @@ export default async function handler(
   }
 
   try {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+
+    if (!existingUser) {
+      res.status(404).json({
+        error: {
+          code: 404,
+          message: `User with id ${id} not found`,
+        },
+      });
+      return;
+    }
+
     const deletedUser = await prisma.user.delete({
       where: {
         id: id,
