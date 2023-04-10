@@ -16,7 +16,7 @@ export default async function handler(
       },
     });
     console.error(
-      `Method ${method} not allowed on this route /api/user/read/[username]`
+      `Method ${method} not allowed on this route /api/user/read/username/[username]`
     );
     return;
   }
@@ -39,6 +39,7 @@ export default async function handler(
         username: username,
       },
       select: {
+        id:true,
         username: true,
         posts: true,
       },
