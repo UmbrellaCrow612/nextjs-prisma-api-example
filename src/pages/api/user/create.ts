@@ -11,8 +11,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(405).json({
       error: {
         code: 405,
-        message: `Method ${method} not allowed`,
+        message: `Method ${method} not allowed. Please use the POST method instead.`,
       },
     });
+    console.error(
+      `Method ${method} not allowed on this route /api/user/create `
+    );
   }
 }
