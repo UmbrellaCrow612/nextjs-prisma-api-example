@@ -16,7 +16,7 @@ export default async function handler(
       },
     });
     console.error(
-      `Method ${method} not allowed on this route /api/comment/[id]`
+      `Method ${method} not allowed on this route /api/comment/delete/[id]`
     );
     return;
   }
