@@ -82,10 +82,6 @@ export default async function handler(
           },
         },
       },
-      include: {
-        User: true,
-        Post: true,
-      },
     });
 
     res.status(201).json(newComment);
